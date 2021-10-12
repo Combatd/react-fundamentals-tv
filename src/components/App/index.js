@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import Intro from './components/Intro';
+import Intro from '../Intro';
 import './App.css';
 
 function App() {
