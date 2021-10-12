@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const greeting = React.createElement('h1', {}, 'Hello World!');
+const getCurrentDate = () => {
+  const date = new Date();
+  return date.toDateString();
+}
+const greeting = <h1>Hello World! Current Date: {getCurrentDate()}</h1>
 
 ReactDOM.render(
   <React.StrictMode>
