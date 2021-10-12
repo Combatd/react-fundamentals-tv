@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import Intro from './components/Intro';
 import './App.css';
 
 function App() {
@@ -6,9 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>TV Series List</h1>
-        <p className="App intro">
-          Our first functional component
-        </p>
+        <Intro message='Here you can find all of your most loved series' />
       </header>
     </div>
   );
