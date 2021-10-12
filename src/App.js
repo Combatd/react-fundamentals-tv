@@ -10,7 +10,6 @@ function App() {
           Our first functional component
         </p>
       </header>
-      <intro />
     </div>
   );
 }
