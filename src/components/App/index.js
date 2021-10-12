@@ -17,7 +17,7 @@ class App extends Component {
       this.setState({ 
         series: series
       })
-    });
+    }, 2000);
   }
 
   render() {
