@@ -14,8 +14,12 @@ class App extends Component {
   componentDidMount() {
     fetch('http://api.tvmaze.com/search/shows?q=Vikings')
     .then((response) => {
-      console.log(response);
-    }).catch((err) => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
       console.log(err);
     });
   }
