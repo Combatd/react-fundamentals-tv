@@ -5,11 +5,17 @@ class Series extends Component {
     constructor() {
         super();
         this.state = {
-        series: []
+        series: [],
+        seriesName: '',
+        isFetching: false,
         }
     }
 
     onSeriesInputChange = (event) => {
+        this.setState({  
+            seriesName: event.target.value,
+            isFetching: true
+        })
         fetch(`http://api.tvmaze.com/search/shows?q=${event.target.value}`)
         .then((response) => {
         return response.json()
@@ -24,11 +30,15 @@ class Series extends Component {
     }
         
     render() {
+        const { series, seriesName, isFetching } = this.state;
         return (
             <div>
                 The length of series array = {this.state.series.length}
                 <div>
-                    <input type='text' onChange={this.onSeriesInputChange} />
+                    <input 
+                    value={seriesName}
+                    type='text' 
+                    onChange={this.onSeriesInputChange} />
                 </div>
                 <SeriesList list={this.state.series} />
             </div>
