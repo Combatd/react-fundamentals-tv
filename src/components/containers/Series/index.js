@@ -21,7 +21,7 @@ class Series extends Component {
         return response.json()
         })
         .then((data) => {
-        this.setState({ series: data });
+        this.setState({ series: data, isFetching: false });
         })
         .catch((err) => {
         console.log(err);
@@ -40,7 +40,22 @@ class Series extends Component {
                     type='text' 
                     onChange={this.onSeriesInputChange} />
                 </div>
-                <SeriesList list={this.state.series} />
+                { 
+                    series.length === 0 && seriesName.trim() === '' 
+                    &&
+                    <p>Please enter series name into the input</p>
+                }
+                {
+                    series.length === 0 && seriesName.trim() !== '' 
+                    &&
+                    <p>No TV series has been found with this name</p>
+                }
+                {
+                    isFetching && <p>Loading...</p>
+                }
+                {
+                    !isFetching && <SeriesList list={this.state.series} />
+                }               
             </div>
         );
     }
