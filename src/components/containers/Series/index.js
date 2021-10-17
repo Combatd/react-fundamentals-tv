@@ -9,8 +9,8 @@ class Series extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch('http://api.tvmaze.com/search/shows?q=Vikings')
+    onSeriesInputChange = (event) => {
+        fetch(`http://api.tvmaze.com/search/shows?q=${event.target.value}`)
         .then((response) => {
         return response.json()
         })
@@ -20,12 +20,16 @@ class Series extends Component {
         .catch((err) => {
         console.log(err);
         });
+        console.log(event.target.value);
     }
         
     render() {
         return (
             <div>
                 The length of series array = {this.state.series.length}
+                <div>
+                    <input type='text' onChange={this.onSeriesInputChange} />
+                </div>
                 <SeriesList list={this.state.series} />
             </div>
         );
