@@ -4,7 +4,7 @@ import './index.css';
 const SeriesListItem = (props) => {
     const { series } = props;
     return(
-        <li key={series.show.id}>
+        <li> 
             {series.show.name}
         </li>
     )
@@ -16,7 +16,7 @@ const SeriesList = (props) => {
             <ul className="series-list">
                 {props.list.map((series) => {
                     return (
-                        <SeriesListItem series={series} />
+                        <SeriesListItem  series={series} key={series.show.id} />
                     )
                 })}
             </ul>
