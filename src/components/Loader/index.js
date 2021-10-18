@@ -6,6 +6,7 @@ class Loader extends Component {
         return (
             <div>
                 <img 
+                style={{width: 75}}
                 alt='loader icon'
                 src={loaderSrc} />
             </div>
