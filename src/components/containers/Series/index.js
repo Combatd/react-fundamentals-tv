@@ -52,7 +52,7 @@ class Series extends Component {
                     <p>No TV series has been found with this name</p>
                 }
                 {
-                    isFetching && <p>Loading...</p>
+                    isFetching && <Loader />
                 }
                 {
                     !isFetching && <SeriesList list={this.state.series} />
