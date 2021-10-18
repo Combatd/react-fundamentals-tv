@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SeriesList from '../SeriesList';
+import Loader from "../../Loader";
 
 class Series extends Component {
     constructor() {
