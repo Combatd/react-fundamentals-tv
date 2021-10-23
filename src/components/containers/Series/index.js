@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SeriesList from '../SeriesList';
 import Loader from "../../Loader";
+import Intro from '../../Intro';
 
 class Series extends Component {
     constructor() {
@@ -35,6 +36,7 @@ class Series extends Component {
         return (
             <div>
                 The length of series array = {this.state.series.length}
+                <Intro message='Here you can find all of your most loved series' />
                 <div>
                     <input 
                     value={seriesName}
