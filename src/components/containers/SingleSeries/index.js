@@ -1,11 +1,47 @@
 import React, { Component } from 'react';
+import Loader from '../../Loader';
 
 class SingleSeries extends Component {
+    constructor() {
+        super();
+        this.state = {
+            show: null
+        }
+    }
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        
+        fetch(`http://api.tvmaze.com/shows/${id}?embed=episodes`)
+        .then((response) => {
+        return response.json()
+        })
+        .then((data) => {
+        this.setState({ show: data });
+        })
+        .catch((err) => {
+        console.log(err);
+        });
+    }
+
     render() {
-        const {id} = this.props.match.params;
+        const { show } = this.state;
         return(
             <div>
-                <p>Single Series: show id is {id}</p>
+                {show === null && <Loader />}
+                {
+                    show !== null
+                    &&
+                    <div>
+                        <p>{show.name}</p>
+                        <p>Premiered: {show.premiered}</p>
+                        <p>Rating: {show.rating.average}</p>
+                        <p>Episodes: {show._embedded.episodes.length}</p>
+                        <p>
+                            <img alt="show img" src={show.image.medium}/>
+                        </p>
+                    </div>
+                }
             </div>
         )
     }
